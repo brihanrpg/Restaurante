@@ -4,14 +4,16 @@
 namespace Controllers;
 use Core\Controller;
 use Core\View;
+use Models\Produto;
 
 class Produtos extends Controller{
     public function index()
     {
         $view = new View('produtos.lista');
-        $view->nome = 'x-salada';
-        $view->valor = 55.5;
-        $view->show();
+        $produtosModel = new Produto();
+        $view->produtos = $produtosModel->all();
+        $view->setTitle('Cadastro de Produtos')->show();
+
        
     }
 
