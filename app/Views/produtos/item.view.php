@@ -1,24 +1,24 @@
 <div class="row">
     <div class="col-12">
         <!-- Default box -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Produtos <?=$id?></h3>
-
+        <div class="card card-primary collapsed-card">
+            <div class="card-header cursor-pointer" data-card-widget="collapse">
+                <h3 class="card-title">Cadastrar Produtos</h3>
                 <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                        <i class="fas fa-times"></i>
+                    <button type="button" class="btn btn-tool" title="Collapse">
+                        <i class="fas fa-plus"></i>
                     </button>
                 </div>
             </div>
             <div class="card-body">
-              Tela de Produtos <?=$nome?>
-              <p>
-                Valor: <?=$valor?>
-              </p>
+                <?php if (isset($nome)): ?>
+                    Tela de Produtos <?=$nome?>
+                <?php endif; ?>
+                <p>
+                    <?php if (isset($valor)): ?>
+                        Valor: <?=$valor?>
+                    <?php endif; ?>
+                </p>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
@@ -27,5 +27,5 @@
             <!-- /.card-footer-->
         </div>
         <!-- /.card -->
-    </div>
+    </div>    
 </div>

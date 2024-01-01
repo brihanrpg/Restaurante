@@ -2,9 +2,12 @@
 
 
 namespace Controllers;
+
+use Components\ToastsAlert;
 use Core\Controller;
 use Core\View;
 use Models\Produto;
+use Core\Request;
 
 class Produtos extends Controller{
     public function index()
@@ -23,6 +26,14 @@ class Produtos extends Controller{
         $view->valor = 22.39;
         $view->id = $id;
         $view->show();
+    }
+
+    public function disponivel(Request $request){
+        $produto = new Produto($request->id);
+        $produto->disponivel = !$produto->disponivel;
+        $produto->save();
+        ToastsAlert::addAlertSuccess('Produto alterado com sucesso!');
+        $this->redirect();
     }
 
 }
