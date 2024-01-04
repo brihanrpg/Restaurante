@@ -31,7 +31,7 @@ class Select extends Component{
         $html="";
         if($this->placeholder){
             $select = (empty($this->value))?'select' : '';
-            $html.= "<option disabled$select>{$this->Placeholder}</option>";
+            $html.= "<option disabled$select value''>{$this->Placeholder}</option>";
 
         }
         foreach($this->options as $value => $text) {
@@ -48,7 +48,7 @@ class Select extends Component{
         $data = array_merge($this->data, $data);
         $attrs = '';
         foreach($data as $key => $value) {
-            $attrs .= "$key = '$value'";
+            $attrs .= "$key='$value'";
         }
         echo "<select $attrs>";
         echo $this->generateOptions();

@@ -33,8 +33,34 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <i class="fas fa-edit"></i>
-                                    <i class="fas fa-trash"></i>
+                                <a href="<?= action(\Controllers\Produtos::class, 'edit', 'GET',['id'=>$produto->id]) ?>" class="btn text-primary"><i class="fa fa-edit"></i></a>
+                                <button type="button" class="btn text-danger" data-toggle="modal" data-target="#Comfirma-exclusao<?=$produto->id?>">
+                                <i class="fas fa-trash"></i>
+                                    </button>  
+                                    <div class="modal fade" id="Comfirma-exclusao<?=$produto->id?>">
+        <div class="modal-dialog">
+          <div class="modal-content ">
+            <div class="modal-header bg-danger">
+              <h4 class="modal-title">Comfirmar Exclusao</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Confirma a exclusao do produto <b><?=$produto->nome?>"?</b></p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+              <form action="<?=action(\Controllers\Produtos::class,'delete','POST')?>"method="post">
+              <input type="hidden" value="<?= $produto->id?>" name="id">
+              <button type="submit" class="btn  btn-outline-danger">Excluir</button>
+              </form>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>   
                                 </td>
                             </tr>
                         <?php endforeach; ?>
